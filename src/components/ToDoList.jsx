@@ -1,9 +1,31 @@
+import { useState } from 'react';
+export default function ToDoList({name, initialList}) {
+    const [list, setList] = useState([initialList]);
+    const [input, setInput] = useState("");
 
-export default function ToDoList() {
+    function handleRemoveAllClick() {
+        setList([]);
+    }
 
-    const name = "User";
+    function handleInputChange(event) {
+        setInput(event.target.value);
+    }
+
+    function handleAddClick() {
+        setList([...list, input]);
+    }
 
     return (
-        <h1>Welcome back, {name}!</h1>
+        <div>
+        <h1>{name}</h1>
+        <ul> 
+            {list.map((elem) => <li>{elem}</li>
+        )}
+        </ul>
+        <input type="text" onChange={handleInputChange}></input>
+        <button onClick={handleAddClick}>Add</button>
+        <button onClick={(handleRemoveAllClick)}>Remove All</button>
+        </div>
+
     )
 }
