@@ -7,8 +7,7 @@ const Title = styled.h1`
   `; 
 
 const Wrapper = styled.section`
-  padding: 4em;
-  background: linear-gradient(to bottom,#F2E6EE, #977DFF);
+  padding: 1em;
   `;
 
   export {Title, Wrapper};
