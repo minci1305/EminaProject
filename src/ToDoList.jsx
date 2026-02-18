@@ -1,31 +1,34 @@
 import { useState } from 'react';
-export default function ToDoList({name, initialList}) {
-    const [list, setList] = useState([initialList]);
-    const [input, setInput] = useState("");
+import { v4 as uuidv4 } from 'uuid';
+import { Title, Wrapper } from './components/Title.js';
 
-    function handleRemoveAllClick() {
-        setList([]);
-    }
+export default function ToDoList({name}) {
+    const [list, setList] = useState([]);
+    const [input, setInput] = useState("");
 
     function handleInputChange(event) {
         setInput(event.target.value);
     }
 
     function handleAddClick() {
-        setList([...list, input]);
+        setList([...list, {id: uuidv4(), name:input}]);
     }
 
     return (
-        <div>
-        <h1>{name}</h1>
+        <>
+        <Wrapper>
+            <Title>{name}</Title>
+        </Wrapper>
+  
         <ul> 
-            {list.map((elem) => <li>{elem}</li>
-        )}
+            {list.map((elem) => (
+                 <li key={uuidv4}> {elem.name}</li>
+            ))};
         </ul>
         <input type="text" onChange={handleInputChange}></input>
         <button onClick={handleAddClick}>Add</button>
         <button onClick={(handleRemoveAllClick)}>Remove All</button>
-        </div>
+        </>
 
     )
 }
