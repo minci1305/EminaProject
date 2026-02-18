@@ -23,20 +23,31 @@ h2 {
   color: #6C5F8D;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
+  text-shadow: 2px 2px 4px #646cff;
+
 }
 
 ul {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   list-style: circle;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0 auto;
+  width: fit-content;
+
 }
 
-input {
+input[type="text"]{
   display: block;
   margin: 0 auto;
   padding: 0.5rem;
   font-size: medium;
   border-radius: 5px;
-  border: none;
+  background-color: #F2E6EE;
+}
+
+input[type="checkbox"] {
+  margin-left: 10px;
 }
 
 button {

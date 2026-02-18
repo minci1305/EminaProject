@@ -8,26 +8,40 @@ export default function ToDoList({name}) {
 
     function handleInputChange(event) {
         setInput(event.target.value);
+        
     }
 
     function handleAddClick() {
-        setList([...list, {id: uuidv4(), name:input}]);
+        setList([...list, {id:uuidv4(), name:input, done:false}]);
+        setInput("");
+    }
+
+    function handleCheckBox(element_id) {
+        let newList= list.map(e => {
+            return e.id == element_id ? {id:e.id, name:e.name, done: !e.done} : e;
+        });
+        setList(newList);
+
     }
 
     return (
         <>
         <Wrapper>
             <Title>{name}</Title>
-        </Wrapper>
-  
         <ul> 
             {list.map((elem) => (
-                 <li key={uuidv4}> {elem.name}</li>
-            ))};
+                 <li 
+                 style={{textDecoration: elem.done ? "line-through" : ""}} 
+                 key={elem.id}> 
+                 {elem.name}
+                 <input type="checkbox" value={elem.done} onClick={() => handleCheckBox(elem.id)}></input>
+                 </li>
+            ))}
         </ul>
         <input type="text" onChange={handleInputChange}></input>
         <button onClick={handleAddClick}>Add</button>
-        <button onClick={(handleRemoveAllClick)}>Remove All</button>
+        <button onClick={() => setList([])}>Remove All</button>
+         </Wrapper>
         </>
 
     )
