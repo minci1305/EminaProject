@@ -6,11 +6,6 @@
   padding: 2rem;
 }
 
-
-body, #grad {
-  background-image: linear-gradient(to bottom,#F2E6EE, #977DFF);
-}
-
 h1 {
   font-size: xx-large;
   color: #6C5F8D;
