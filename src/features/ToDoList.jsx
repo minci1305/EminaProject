@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Title, Wrapper } from './components/Title.js';
+import { Title, Wrapper } from '../components/Title.js';
 
 export default function ToDoList({name}) {
     const [list, setList] = useState([]);
