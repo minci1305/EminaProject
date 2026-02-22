@@ -38,7 +38,7 @@ export default function LogIn() {
 
           <div className="login-actions">
             <button type="submit">Log in</button>
-            <Link to="/signup">Sign up</Link>
+            <Link to="/signup">Don't have a user? Click here to sign up!</Link>
           </div>
         </form>
       </div>
