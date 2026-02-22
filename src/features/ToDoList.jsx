@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Title, Wrapper } from '../components/Title.js';
+import { Link, NavLink } from 'react-router-dom';
+import LogIn from './LogIn.jsx';
 
 export default function ToDoList({name}) {
     const [list, setList] = useState([]);
@@ -23,6 +25,7 @@ export default function ToDoList({name}) {
         setList(newList);
 
     }
+
 
     return (
         <>

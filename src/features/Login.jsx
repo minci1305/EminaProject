@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
+import "../index.css";
 
 export default function LogIn() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -20,8 +20,7 @@ export default function LogIn() {
     <div className="login-page">
       <div className="login-card">
         <h1>Welcome back!</h1>
-
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <input
             name="email"
             type="email"
@@ -37,7 +36,7 @@ export default function LogIn() {
             onChange={handleChange}
           />
 
-          <div className="auth-actions">
+          <div className="login-actions">
             <button type="submit">Log in</button>
             <Link to="/signup">Sign up</Link>
           </div>
