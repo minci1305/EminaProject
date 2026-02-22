@@ -44,6 +44,9 @@ export default function ToDoList({name}) {
         <input type="text" onChange={handleInputChange}></input>
         <button onClick={handleAddClick}>Add</button>
         <button onClick={() => setList([])}>Remove All</button>
+        <div className="signout-actions">
+            <Link to="/login">Sign Out</Link>
+        </div>
          </Wrapper>
         </>
 
