@@ -45,8 +45,62 @@ button {
 }
 
 .login-card {
-  width: 400px;
+ /* width: 400px;
   padding: 40px;
   border-radius: 12px;
-  border: #977DFF 1px solid;
+  border: transparent 10px solid;
+  background-color: #977DFF;
+  background-image: linear-gradient(red,blue),
+    radial-gradient(
+    circle at 50% 250%,
+    rgb(118, 60, 135), 
+    transparent
+    ); */
+    width: 500px;
+    border-radius: 1rem;
+    position: relative;
+    background: hsl(#977DFF) h s l / 0.2;
+    backdrop-filter:blur(12px);
 }
+
+.login-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(#F2E6EE, #977DFF);
+  mask: linear-gradient(black) border-box,
+        linear-gradient(black) padding-box;
+  mask-composite: subtract;
+}
+
+.login-card h1 {
+  margin: 0 0 1rem;
+}
+
+.login-form {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.login-form input {
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: white;
+
+}
+
+.login-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+
+}
+
