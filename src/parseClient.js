@@ -1,6 +1,5 @@
-import ParseImport from 'parse';
+import * as Parse from "parse/dist/parse.min.js";
 
-const Parse = ParseImport.default ?? ParseImport;
 
 
 export function initParse() {

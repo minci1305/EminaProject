@@ -1,4 +1,4 @@
-import { Parse } from "../parseClient";
+import { Parse } from "./parseClient";
 
 export async function signUp({ username, email, password }) {
     if (!username || !password || !email) {
@@ -20,8 +20,8 @@ export async function signUp({ username, email, password }) {
             createdAt: newUser.createdAt,
         };
     } catch (e) {
-        console.error("Error signing up: ", e);
         throw e;
+        
     }
 }
 
@@ -33,12 +33,11 @@ export async function logIn({username, password}) {
 
 
     try {
-        const user = awaitParse.User.logIn(username, password);
+        const user = await Parse.User.logIn(username, password);
 
         return {
             id: user.id,
             username: user.get("username"),
-            password: user.get("password"),
             email: user.get("email"),
             createdAt: user.createdAt,
         };
@@ -72,12 +71,3 @@ export function logOut() {
     }
 }
 
-export function isAuthenticated() {
-    const currentUser = Parse.User.current();
-    return !!currentUser;
-}
-
-export function getUserEmail() {
-    const currentUser = Parse.User.current();
-    return currentUser ? currentUser.get("email") : null;
-}

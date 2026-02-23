@@ -45,7 +45,7 @@ export default function ToDoList({name}) {
         <button onClick={handleAddClick}>Add</button>
         <button onClick={() => setList([])}>Remove All</button>
         <div className="signout-actions">
-            <Link to="/login">Sign Out</Link>
+            <Link to='/'>Sign Out</Link>
         </div>
          </Wrapper>
         </>

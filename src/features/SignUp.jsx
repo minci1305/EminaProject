@@ -35,7 +35,7 @@ const handleSubmit = async (e) => {
         
         navigate("/todolist");
     } catch (e) {
-        isAuthenticated() && getUserEmail() === form.email
+            e.code === 202
             ? setError("User already exists. Please log in.")
             : setError("Error signing up: " + e.message);
 } 
@@ -86,7 +86,7 @@ return (
                     <button type="submit"
                     disabled={loading}
                     >Sign up</button>
-                    <Link to={'/login'}>Back to login</Link>
+                    <Link to={'/'}>Back to login</Link>
                 </div>
             </form>
         </div>
