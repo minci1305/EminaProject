@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import ToDoList from './features/ToDoList';
 import LogIn from './features/LogIn';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './features/SignUp';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   

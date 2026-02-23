@@ -6,6 +6,7 @@ export default function LogIn() {
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
+
   function handleChange(e) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -15,6 +16,7 @@ export default function LogIn() {
     // later: validate + call backend
     navigate("/todolist");
   }
+
 
   return (
     <div className="login-page">
