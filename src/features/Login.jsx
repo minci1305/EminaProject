@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
+import { logIn, signUp } from "../service/authService";
 
 export default function LogIn() {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
 
 
@@ -13,7 +14,7 @@ export default function LogIn() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // later: validate + call backend
+    signUp("username", "password");
     navigate("/todolist");
   }
 
