@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
 
+
 export default function SignUp() {
   const navigate = useNavigate();
 
@@ -12,6 +13,9 @@ export default function SignUp() {
     password: "" ,
     confirmPassword: "",
 });
+
+
+
 
   function handleChange(e) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -26,7 +30,6 @@ export default function SignUp() {
 return (
     <div className="login-page">
         <div className="login-card">
-            <h1>Fill Out All</h1>
             <form className="login-form" onSubmit={handleSubmit}>
                 <input
                     name="firstname"
