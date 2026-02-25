@@ -1,46 +1,71 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
-import { logIn, signUp } from "../service/authService";
+import { logIn} from "../service/authService";
 
 export default function LogIn() {
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
 
   function handleChange(e) {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    signUp("username", "password");
-    navigate("/todolist");
+    setError("");
+    setLoading(true);
+  
+        try {
+            await logIn({email, password});
+            navigate("/todolist");
+        } catch (error) {
+          if (error.code === 101) {
+            setError("Invalid email or password.");
+          } else {  
+            setError("Error logging in: " + error.message);
+          }
+      } finally {
+        setLoading(false);
+    }
   }
 
 
   return (
     <div className="login-page">
       <div className="login-card">
-        <h1>Welcome back!</h1>
+        <h1>Log In</h1>
+        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             name="email"
             type="email"
             placeholder="Email"
-            value={form.email}
+            value={email}
             onChange={handleChange}
           />
           <input
             name="password"
             type="password"
             placeholder="Password"
-            value={form.password}
+            value={password}
             onChange={handleChange}
           />
 
           <div className="login-actions">
-            <button type="submit">Log in</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Logging in..." : "Log in"}
+            </button>
             <Link to="/signup">Don't have a user? Click here to sign up!</Link>
           </div>
         </form>
