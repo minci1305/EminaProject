@@ -4,11 +4,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-}
-
-
-body, #grad {
-  background-image: linear-gradient(to bottom,#F2E6EE, #977DFF);
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
@@ -23,20 +20,25 @@ h2 {
   color: #6C5F8D;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
+  text-shadow: 2px 2px 4px #646cff;
+
 }
 
-ul {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  list-style: circle;
+.input-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
-input {
-  display: block;
-  margin: 0 auto;
-  padding: 0.5rem;
-  font-size: medium;
-  border-radius: 5px;
-  border: none;
+.input-group input[type="text"] {
+  margin: 0; 
+}
+
+input[type="checkbox"] {
+  margin-left: 10px;
 }
 
 button {
@@ -57,4 +59,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
 
