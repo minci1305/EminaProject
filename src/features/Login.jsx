@@ -11,8 +11,9 @@ export default function LogIn() {
 
   const navigate = useNavigate();
 
-
-  function handleChange(e) {
+//destructures the event object to get the name and value of the input field, 
+//updates the corresponding state based on the inputs name (email or password)
+ function handleChange(e) {
     const { name, value } = e.target;
     if (name === "email") {
       setEmail(value);
@@ -21,6 +22,7 @@ export default function LogIn() {
     }
   }
 
+  //handles login submission and manages loading state
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
