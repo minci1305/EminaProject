@@ -4,6 +4,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
@@ -29,16 +31,21 @@ ul {
   padding: 0;
   margin: 0 auto;
   width: fit-content;
-
 }
 
-input[type="text"]{
-  display: block;
-  margin: 0 auto;
-  padding: 0.5rem;
-  font-size: medium;
-  border-radius: 5px;
-  background-color: #F2E6EE;
+.input-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.input-group input[type="text"] {
+  margin: 0; 
+  flex: 1; 
+  max-width: 300px;
 }
 
 input[type="checkbox"] {
@@ -62,5 +69,75 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* LIST */
+.task-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: 0.2s ease;
+}
+
+.task-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-description {
+  font-weight: 500;
+}
+
+.task-item.completed .task-description {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-priority {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.priority-1 {
+  color: #ff6b6b;   
+}
+
+.priority-2 {
+  color: #ffd166;   
+}
+
+.priority-3 {
+  color: #6bcf63;   
+}
+
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 0, 0, 0.2);
 }
 

@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "./index.css";
 import ToDoList from './features/ToDoList';
 import LogIn from './features/LogIn';
 import SignUp from './features/SignUp';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 
-function App() {
+export default function App() {
   
   return (
     <BrowserRouter>
@@ -14,10 +15,11 @@ function App() {
         <Route path='/' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/todolist' element={<ToDoList />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
 
   );
 }
 
-export default App;
+
