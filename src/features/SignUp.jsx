@@ -14,25 +14,34 @@ export default function SignUp() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-
+    //handles the form submission for user registration, manages loading state 
+    //displays error messages based on the response from the registration service
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+        e.preventDefault();
+        setError("");
 
-    const Parse = window.Parse;
-    if (!Parse) {
-        setLoading(false);
-        setError("Error with Parse");
-        return;
-    }
+        if (password.length < 5) {
+           setError({"password":"Password must be at least 6 characters."}); 
+            return;
+        }
+
+       setLoading(true);
+
     try {
         const newUser = await register({username,email,password});
         console.log("Succes signing up user: ", newUser);
         navigate("/todolist");
-    } catch (e) {
-        console.log("Failed signing up: ", e);
-        setError(e?.message??"Sign up failed");
+    } catch (error) {
+        if (error.code === 202) {
+            setError({"email": "Email already exists."});
+            console.log("Failed signing up: ", error);
+        } else if (!password || password.trim() === 0) {
+            setError({"password": "Password is required."});
+            console.log("Failed signing up: ", error);
+        }  else {
+            setError(error?.message??"Sign up failed");
+            console.log("Failed signing up: ", error);
+        }
     } finally {
     setLoading(false);
     }
@@ -60,10 +69,11 @@ return (
                 <input
                     name="password"
                     type="password"
-                    placeholder="Password*"
+                    placeholder="Password* (min 6 characters)"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                {error && <p className="error">{error.password || error.email || error}</p>}
                 <div className="login-actions">
                     <button type="submit" disabled={loading}>
                     {loading ? "Signing up..." : "Sign up"}
