@@ -47,10 +47,6 @@ export default function ToDoList() {
 
     //handler for adding a new task, calls newTaskItem() from taskService.js and updates the list state
     async function handleAddClick() {
-        if (!input.trim()) {
-            alert("Please enter a task description.");
-            return;
-        }
         const newItem = await newTaskItem(input);
         const formattedItem = {
             id: newItem.id,
@@ -123,7 +119,7 @@ export default function ToDoList() {
                         }
                     }}
                     />
-                <button onClick= {handleAddClick}>Add</button>
+                <button disabled={!input.trim()} onClick= {handleAddClick}>Add</button>
                 </div>
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '20px'}}>
                      <button onClick={handleDeleteCompleted}>Delete Completed</button> 
