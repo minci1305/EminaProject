@@ -8,6 +8,7 @@ export default function ToDoList() {
     const [list, setList] = useState([]);
     const [input, setInput] = useState("");
     const [currentUser, setUser] = useState(null);
+    const [loading, isLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,7 +22,8 @@ export default function ToDoList() {
 
     //loads tasks on page load and whenever currentUser changes (e.g. on login/logout)
     useEffect(() => {
-        if (!currentUser) return; 
+        if (!currentUser) return;
+        isLoading(true)
         const loadTasks = async () => {
             try {
                 const tasks = await getTasks();
@@ -29,9 +31,11 @@ export default function ToDoList() {
             } catch (error) {
                 console.error("Error loading tasks:", error);
                 throw new Error("Failed to load tasks");
+            } finally {
+                isLoading(false);
             }
         };
-        loadTasks();
+        {isLoading(true) ? "Loading..." : loadTasks()}
     }, [currentUser]);
 
     //handler calls logOut()  from authService.js, clears user state and redirects to login page
