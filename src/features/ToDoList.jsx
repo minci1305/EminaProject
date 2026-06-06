@@ -117,8 +117,13 @@ export default function ToDoList() {
                     placeholder="Add task"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleAddClick();
+                        }
+                    }}
                     />
-                <button onClick={handleAddClick}>Add</button>
+                <button onClick= {handleAddClick}>Add</button>
                 </div>
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '20px'}}>
                      <button onClick={handleDeleteCompleted}>Delete Completed</button> 
